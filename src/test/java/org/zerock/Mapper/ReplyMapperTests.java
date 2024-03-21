@@ -46,6 +46,15 @@ public class ReplyMapperTests {
 		
 	}
 	
+	@Test
+	public void testDelete() {
+		
+		Long targetRno = 1L;
+		
+		mapper.delete(targetRno);
+		
+	}
+	
     @Test
     public void testMapper() {
             log.info("Mapper: " + mapper.toString());
