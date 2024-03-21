@@ -55,6 +55,20 @@ public class ReplyMapperTests {
 		
 	}
 	
+	@Test
+	public void testUpdate() {
+		
+		Long targetRno = 9L;
+		
+		ReplyVO vo = mapper.read(targetRno);
+		
+		vo.setReply("Update Reply ");
+
+		int count = mapper.update(vo);
+		
+		log.info("UPDATE COUNNT:"+count);
+	}
+	
     @Test
     public void testMapper() {
             log.info("Mapper: " + mapper.toString());
