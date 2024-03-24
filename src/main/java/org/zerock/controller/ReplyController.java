@@ -86,6 +86,7 @@ public class ReplyController {
 	public ResponseEntity<String> modify(@RequestBody ReplyVO vo , @PathVariable("rno") Long rno){
 		vo.setRno(rno);
 		
+		
 		log.info("rno :" + rno);
 		
 		log.info("modify:" + vo);
