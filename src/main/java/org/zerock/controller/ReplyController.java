@@ -31,8 +31,7 @@ public class ReplyController {
 	private ReplyService service;
 	
 	
-	@PostMapping(value = "/new", consumes = "application/json", 
-			produces = {MediaType.TEXT_PLAIN_VALUE})
+	@PostMapping(value = "/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE}) // JSON 방식의 데이터만 처리하도록한다.
 	public ResponseEntity<String> create(@RequestBody ReplyVO vo){
 		
 		log.info("ReplyVO" + vo);
