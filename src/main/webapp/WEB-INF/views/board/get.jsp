@@ -90,6 +90,18 @@
 	});
 	 */
 	$(document).ready(function() {
+		var operForm = $("#operForm");
+
+		$("button[data-oper='modify']").on("click", function(e) {
+			operForm.attr("action", "/board/modify").submit();
+		});
+
+		$("button[data-oper='list']").on("click", function(e) {
+			operForm.find("#bno").remove();
+			operForm.attr("action", "/board/list");
+			operForm.submit();
+		});
+		
 		var bnoValue = '<c:out value="${board.bno}"/>';
 		var replyUL = $(".chat");
 
@@ -134,6 +146,22 @@
 			modalRegisterBtn.show();
 
 			$(".modal").modal("show");
+		}); //on end
+		
+		modalRegisterBtn.on("click", function(e) {
+		    var reply = {
+		        reply: modalInputReply.val(),
+		        replyer: modalInputReplyer.val(),
+		        bno: bnoValue
+		    };
+
+		    replyService.add(reply, function(result) {
+		        alert(result);
+		        modal.find("input").val("");
+		        modal.modal("hide");
+		        //새로고침해서 새롭게달린 글을 가져온다.
+		        showList(1);
+		    });
 		});
 		
 		
@@ -143,22 +171,6 @@
 
 
 
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		let operForm = $("#operForm");
-
-		$("button[data-oper='modify']").on("click", function(e) {
-			operForm.attr("action", "/board/modify").submit();
-		});
-
-		$("button[data-oper='list']").on("click", function(e) {
-			operForm.find("#bno").remove();
-			operForm.attr("action", "/board/list");
-			operForm.submit();
-		})
-	});
-</script>
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Board Read</h1>
