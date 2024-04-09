@@ -91,6 +91,7 @@
 	 */
 	$(document).ready(function() {
 		var operForm = $("#operForm");
+	
 
 		$("button[data-oper='modify']").on("click", function(e) {
 			operForm.attr("action", "/board/modify").submit();
@@ -162,6 +163,14 @@
 		        //새로고침해서 새롭게달린 글을 가져온다.
 		        showList(1);
 		    });
+		});
+		
+		// 댓글 릭 시 모달 오픈
+		$(".chat").on("click", "li", function (e) {		
+			
+			 var rno = $(this).data("rno");
+			 
+			 console.log(rno);
 		});
 		
 		
